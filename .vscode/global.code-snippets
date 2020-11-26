@@ -1,0 +1,36 @@
+{
+	"Function Component": {
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
+		"prefix": "fc",
+		"body": [
+			"import React from 'react';",
+			"",
+			"const $1: React.FC = ({}) => {",
+			"    return <></>;",
+			"};",
+			"",
+			"export default $2;"
+		],
+		"description": "Generate function component."
+	},
+	"Customer Hook": {
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
+		"prefix": "ch",
+		"body": [
+			"import React, { useState, useEffect } from 'react';",
+			"",
+			"const use$1 = ({}) => {",
+			"    const [$2] = useState($3);",
+			"",
+			"    useEffect(() => {",
+			"        ",
+			"    });",
+			"",
+			"    return $4;",
+			"};",
+			"",
+			"export default use$5;"
+		],
+		"description": "Generate custom hook."
+	}
+}
