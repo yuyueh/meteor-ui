@@ -33,3 +33,27 @@
         border-color: $border;
     }
 }
+
+@mixin alert-layout($color) {
+    background-color: lighten($color, 10%);
+    border: 1.5px solid $color;
+}
+
+@mixin cross-pseudo-element($color) {
+    &::before {
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        transform: rotate(45deg);
+        background-color: $color;
+    }
+    &::after {
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        transform: rotate(-45deg);
+        background-color: $color;
+    }
+}

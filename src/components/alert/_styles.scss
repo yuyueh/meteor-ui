@@ -1,0 +1,50 @@
+$cls: #{$meteor-ui-prefix}-alert;
+
+.#{$cls} {
+    padding: 15px;
+    position: relative;
+    padding: 8px 35px 8px 15px;
+    word-wrap: break-word;
+    border-radius: $border-radius;
+    display: inline-block;
+}
+
+.#{$cls}-close-icon {
+    position: absolute;
+    right: 10px;
+    top: 16px;
+    border: none;
+    background-color: transparent;
+}
+
+.#{$cls}-success {
+    @include alert-layout($success);
+
+    .#{$cls}-close-icon {
+        @include cross-pseudo-element($success);
+    }
+}
+
+.#{$cls}-default {
+    @include alert-layout($info);
+
+    .#{$cls}-close-icon {
+        @include cross-pseudo-element($info);
+    }
+}
+
+.#{$cls}-danger {
+    @include alert-layout($danger);
+
+    .#{$cls}-close-icon {
+        @include cross-pseudo-element($danger);
+    }
+}
+
+.#{$cls}-warning {
+    @include alert-layout($warning);
+
+    .#{$cls}-close-icon {
+        @include cross-pseudo-element($warning);
+    }
+}
