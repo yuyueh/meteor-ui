@@ -13,7 +13,7 @@ export enum ButtonType {
     Link = 'link',
 }
 
-interface IButtonProps {
+export interface IButtonProps {
     className?: string;
     disabled?: boolean;
     size?: ButtonSize;
@@ -35,9 +35,9 @@ const Button: React.FC<Partial<IButtonPropsWithNativeElement>> = ({
     href,
     ...restProps
 }) => {
-    const classes = classNames('btn', className, {
-        [`btn-${buttonType}`]: buttonType,
-        [`btn-${size}`]: size,
+    const classes = classNames('mt-btn', className, {
+        [`mt-btn-${buttonType}`]: buttonType,
+        [`mt-btn-${size}`]: size,
         disabled: buttonType === ButtonType.Link && disabled,
     });
 
