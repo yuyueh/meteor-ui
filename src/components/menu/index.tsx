@@ -50,13 +50,15 @@ const Menu: React.FC<IMenuProps> = ({
     };
     const renderChildren = () =>
         Children.map(children, (child, index) => {
+            if (!child) return;
+
             const childElm = child as FunctionComponentElement<IMenuItemProps>;
-            const { displayName } = childElm.type;
+            const { displayName } = childElm?.type;
             if (displayName === 'MenuItem') {
                 return cloneElement(childElm, { index });
             } else {
                 console.warn(
-                    'Warning: Menu has child whitch is not a MenuItem.'
+                    'Warning: Menu has child which is not a MenuItem.'
                 );
             }
         });

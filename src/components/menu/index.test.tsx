@@ -3,13 +3,13 @@ import { fireEvent, render } from '@testing-library/react';
 import Menu, { IMenuProps } from './index';
 import MenuItem from './MenuItem';
 
-const menuFactory = (props: IMenuProps) => {
+const menuFactory = (props: IMenuProps, withWarning: boolean = false) => {
     const wrapper = render(
         <Menu {...props}>
             <MenuItem>active</MenuItem>
             <MenuItem disabled>disabled</MenuItem>
             <MenuItem>other</MenuItem>
-            <li>No display!</li>
+            {withWarning ? <li>No display!</li> : null}
         </Menu>
     );
 
@@ -26,7 +26,18 @@ const menuFactory = (props: IMenuProps) => {
     };
 };
 
+let originalWarn: typeof console.warn;
+
 describe('test Menu and MenuItem component', () => {
+    beforeEach(() => {
+        originalWarn = console.warn;
+        console.warn = jest.fn();
+    });
+
+    afterEach(() => {
+        console.warn = originalWarn;
+    });
+
     it('should render the correct default Menu and MenuItem', () => {
         const props: IMenuProps = {
             className: 'test',
@@ -42,6 +53,16 @@ describe('test Menu and MenuItem component', () => {
         expect(menuElement.getElementsByTagName('li').length).toEqual(3);
         expect(activeElement).toHaveClass('mt-menu-item', 'active');
         expect(disabledElement).toHaveClass('mt-menu-item', 'disabled');
+    });
+    it('should log warn when menu has child which is not a menuItem component', () => {
+        const props: IMenuProps = {};
+        const withWarning = true;
+
+        menuFactory(props, withWarning);
+
+        expect(console.warn).toBeCalledWith(
+            'Warning: Menu has child which is not a MenuItem.'
+        );
     });
     it('should trigger callback function with correct props and change active state when click item', () => {
         const props: IMenuProps = {

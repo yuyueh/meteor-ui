@@ -10,7 +10,7 @@ export interface IMenuItemProps {
 }
 
 const MenuItem: React.FC<IMenuItemProps> = ({
-    index,
+    index = 0,
     disabled,
     className,
     style,
