@@ -4,5 +4,6 @@ $meteor-ui-prefix: mt;
 @import 'reboot';
 @import 'mixin';
 
-@import '../components/button/styles';
 @import '../components/alert/styles';
+@import '../components/button/styles';
+@import '../components/menu/styles';
