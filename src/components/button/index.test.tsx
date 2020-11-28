@@ -4,7 +4,7 @@ import Button, {
     ButtonType,
     ButtonSize,
     IButtonPropsWithNativeElement,
-} from './button';
+} from '.';
 
 describe('test button component', () => {
     it('should render the correct default button', () => {

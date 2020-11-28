@@ -1,6 +1,6 @@
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
-import Alert, { AlertType, IAlertProps } from './alert';
+import Alert, { AlertType, IAlertProps } from '.';
 
 describe('test alert component', () => {
     it('should render the correct default alert', () => {
