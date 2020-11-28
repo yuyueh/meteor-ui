@@ -40,6 +40,7 @@ const Menu: React.FC<IMenuProps> = ({
     const [currentActive, setActive] = useState(defaultIndex);
     const classes = classNames('mt-menu', className, {
         'mt-menu-vertical': mode === 'vertical',
+        'mt-menu-horizontal': mode === 'horizontal',
     });
     const passedContext: IMenuContext = {
         index: currentActive,
@@ -54,7 +55,7 @@ const Menu: React.FC<IMenuProps> = ({
 
             const childElm = child as FunctionComponentElement<IMenuItemProps>;
             const { displayName } = childElm?.type;
-            if (displayName === 'MenuItem') {
+            if (displayName === 'MenuItem' || displayName === 'SubMenu') {
                 return cloneElement(childElm, { index });
             } else {
                 console.warn(

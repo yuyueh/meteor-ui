@@ -28,9 +28,9 @@ $cls: #{$meteor-ui-prefix}-menu;
                 $menu-item-active-color;
         }
     }
-    .submenu-item {
+    .#{$meteor-ui-prefix}-submenu-item {
         position: relative;
-        .submenu-title {
+        .#{$meteor-ui-prefix}-submenu-title {
             display: flex;
             align-items: center;
         }
@@ -52,6 +52,21 @@ $cls: #{$meteor-ui-prefix}-menu;
     .vertical.opened {
         .arrow-icon {
             transform: rotate(180deg) !important;
+        }
+    }
+    .#{$meteor-ui-prefix}-submenu {
+        list-style: none;
+        padding-left: 0;
+        white-space: nowrap;
+        .#{$cls}-item {
+            padding: $menu-item-padding-y $menu-item-padding-x;
+            cursor: pointer;
+            transition: $menu-transition;
+            color: $body-color;
+            &.active,
+            &:hover {
+                color: $menu-item-active-color !important;
+            }
         }
     }
 }
