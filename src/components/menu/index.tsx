@@ -1,5 +1,12 @@
 import classNames from 'classnames';
-import React, { createContext, useState } from 'react';
+import React, {
+    createContext,
+    Children,
+    useState,
+    FunctionComponentElement,
+    cloneElement,
+} from 'react';
+import { IMenuItemProps } from './MenuItem';
 
 type MenuMode = 'horizontal' | 'vertical';
 
@@ -41,10 +48,23 @@ const Menu: React.FC<IMenuProps> = ({
             onSelect?.(selectedIndex);
         },
     };
+    const renderChildren = () =>
+        Children.map(children, (child, index) => {
+            const childElm = child as FunctionComponentElement<IMenuItemProps>;
+            const { displayName } = childElm.type;
+            if (displayName === 'MenuItem') {
+                return cloneElement(childElm, { index });
+            } else {
+                console.warn(
+                    'Warning: Menu has child whitch is not a MenuItem.'
+                );
+            }
+        });
+
     return (
         <ul className={classes} style={style} data-testid="test-menu">
             <MenuContext.Provider value={passedContext}>
-                {children}
+                {renderChildren()}
             </MenuContext.Provider>
         </ul>
     );

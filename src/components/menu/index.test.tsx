@@ -6,11 +6,10 @@ import MenuItem from './MenuItem';
 const menuFactory = (props: IMenuProps) => {
     const wrapper = render(
         <Menu {...props}>
-            <MenuItem index={0}>active</MenuItem>
-            <MenuItem index={1} disabled>
-                disabled
-            </MenuItem>
-            <MenuItem index={2}>other</MenuItem>
+            <MenuItem>active</MenuItem>
+            <MenuItem disabled>disabled</MenuItem>
+            <MenuItem>other</MenuItem>
+            <li>No display!</li>
         </Menu>
     );
 
