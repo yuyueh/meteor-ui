@@ -13,7 +13,7 @@ export enum ButtonType {
     Link = 'link',
 }
 
-export interface IButtonProps {
+interface IButtonProps {
     className?: string;
     disabled?: boolean;
     size?: ButtonSize;
@@ -22,7 +22,7 @@ export interface IButtonProps {
     href?: string;
 }
 
-type IButtonPropsWithNativeElement = IButtonProps &
+export type IButtonPropsWithNativeElement = IButtonProps &
     React.ButtonHTMLAttributes<HTMLElement> &
     React.AnchorHTMLAttributes<HTMLElement>;
 
