@@ -9,7 +9,7 @@
 			"    return <></>;",
 			"};",
 			"",
-			"export default $2;"
+			"export default $2;",
 		],
 		"description": "Generate function component."
 	},
@@ -29,8 +29,23 @@
 			"    return $4;",
 			"};",
 			"",
-			"export default use$5;"
+			"export default use$5;",
 		],
 		"description": "Generate custom hook."
+	},
+	"Test Case": {
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
+		"prefix": "tc",
+		"body": [
+			"import React from 'react';",
+			"import { render } from '@testing-library/react';",
+			"",
+			"describe('$1', () => {",
+			"    it('$2', () => {",
+			"        ",	
+			"    });",
+			"});",
+		],
+		"description": "Generate test case."
 	}
 }
