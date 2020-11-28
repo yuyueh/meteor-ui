@@ -8,7 +8,7 @@ export enum AlertType {
     Warning = 'warning',
 }
 
-interface IAlertProps {
+export interface IAlertProps {
     alertType?: AlertType;
     title: string;
     description?: string;
