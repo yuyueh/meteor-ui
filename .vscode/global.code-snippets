@@ -47,5 +47,15 @@
 			"});",
 		],
 		"description": "Generate test case."
+	},
+	"Test Case - it": {
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
+		"prefix": "it",
+		"body": [
+			"it('$1', () => {",
+			"    ",	
+			"});",
+		],
+		"description": "Generate test case - it."
 	}
 }
