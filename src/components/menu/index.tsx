@@ -10,32 +10,41 @@ import { IMenuItemProps } from './MenuItem';
 
 type MenuMode = 'horizontal' | 'vertical';
 
-type SelectCallback = (selectedIndex: number) => void;
+const defaultMode: MenuMode = 'horizontal';
+
+const defaultSelectedIndex = '0';
+
+type SelectCallback = (selectedIndex: string) => void;
 
 export interface IMenuProps {
-    defaultIndex?: number;
+    defaultIndex?: string;
     className?: string;
     mode?: MenuMode;
     style?: React.CSSProperties;
     onSelect?: SelectCallback;
+    openSubMenuList?: string[];
 }
 
 interface IMenuContext {
-    index: number;
+    index: string;
     onSelect?: SelectCallback;
+    mode: MenuMode;
+    openSubMenuList?: string[];
 }
 
 export const MenuContext = createContext<IMenuContext>({
-    index: 0,
+    index: defaultSelectedIndex,
+    mode: defaultMode,
 });
 
 const Menu: React.FC<IMenuProps> = ({
-    defaultIndex = 0,
+    defaultIndex = defaultSelectedIndex,
     className,
-    mode,
+    mode = defaultMode,
     style,
     onSelect,
     children,
+    openSubMenuList = [],
 }) => {
     const [currentActive, setActive] = useState(defaultIndex);
     const classes = classNames('mt-menu', className, {
@@ -44,10 +53,12 @@ const Menu: React.FC<IMenuProps> = ({
     });
     const passedContext: IMenuContext = {
         index: currentActive,
-        onSelect: (selectedIndex: number) => {
+        onSelect: (selectedIndex: string) => {
             setActive(selectedIndex);
             onSelect?.(selectedIndex);
         },
+        mode,
+        openSubMenuList,
     };
     const renderChildren = () =>
         Children.map(children, (child, index) => {
@@ -56,7 +67,7 @@ const Menu: React.FC<IMenuProps> = ({
             const childElm = child as FunctionComponentElement<IMenuItemProps>;
             const { displayName } = childElm?.type;
             if (displayName === 'MenuItem' || displayName === 'SubMenu') {
-                return cloneElement(childElm, { index });
+                return cloneElement(childElm, { index: `${index}` });
             } else {
                 console.warn(
                     'Warning: Menu has child which is not a MenuItem.'
@@ -74,7 +85,7 @@ const Menu: React.FC<IMenuProps> = ({
 };
 
 Menu.defaultProps = {
-    mode: 'horizontal',
+    mode: defaultMode,
 };
 
 export default Menu;

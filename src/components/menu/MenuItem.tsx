@@ -3,14 +3,14 @@ import React, { useContext } from 'react';
 import { MenuContext } from '.';
 
 export interface IMenuItemProps {
-    index?: number;
+    index?: string;
     disabled?: boolean;
     className?: string;
     style?: React.CSSProperties;
 }
 
 const MenuItem: React.FC<IMenuItemProps> = ({
-    index = 0,
+    index = '',
     disabled,
     className,
     style,
