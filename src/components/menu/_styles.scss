@@ -73,6 +73,9 @@ $cls: #{$meteor-ui-prefix}-menu;
 .#{$cls}-horizontal {
     > .#{$cls}-item {
         border-bottom: $menu-item-active-border-width solid transparent;
+        > .#{$meteor-ui-prefix}-submenu {
+            position: absolute;
+        }
     }
 }
 .#{$cls}-vertical {

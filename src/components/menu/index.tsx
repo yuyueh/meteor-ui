@@ -73,4 +73,8 @@ const Menu: React.FC<IMenuProps> = ({
     );
 };
 
+Menu.defaultProps = {
+    mode: 'horizontal',
+};
+
 export default Menu;
