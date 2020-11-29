@@ -9,7 +9,7 @@
 			"    return <></>;",
 			"};",
 			"",
-			"export default $2;",
+			"export default $1;",
 		],
 		"description": "Generate function component."
 	},
@@ -20,16 +20,16 @@
 			"import React, { useState, useEffect } from 'react';",
 			"",
 			"const use$1 = ({}) => {",
-			"    const [$2] = useState($3);",
+			"    const [$2, $3] = useState($4);",
 			"",
 			"    useEffect(() => {",
 			"        ",
 			"    });",
 			"",
-			"    return $4;",
+			"    return $2;",
 			"};",
 			"",
-			"export default use$5;",
+			"export default use$1;",
 		],
 		"description": "Generate custom hook."
 	},
@@ -41,7 +41,7 @@
 			"import { render } from '@testing-library/react';",
 			"",
 			"describe('test $1 component', () => {",
-			"    it('should render the correct default $2', () => {",
+			"    it('should render the correct default $1', () => {",
 			"        ",	
 			"    });",
 			"});",
@@ -57,5 +57,18 @@
 			"});",
 		],
 		"description": "Generate test case - it."
+	},
+	"Storybook": {
+		"scope": "javascript,typescript,javascriptreact,typescriptreact",
+		"prefix": "story",
+		"body": [
+			"import React from 'react';",
+			"import { storiesOf } from '@storybook/react';",	
+			"import { action } from '@storybook/addon-actions';",
+			"",
+			"storiesOf('$1', module)",
+			".add('Default $1', default$1)"
+		],
+		"description": "Generate story."
 	}
 }
