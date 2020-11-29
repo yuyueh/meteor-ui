@@ -85,7 +85,11 @@ const SubMenu: React.FC<ISubMenuProps> = ({
     );
 
     return (
-        <li className={classes} {...handleMouseHoverProps}>
+        <li
+            className={classes}
+            {...handleMouseHoverProps}
+            data-testid="test-submenu"
+        >
             <div className="mt-submenu-title" {...handleClickProps}>
                 {title}
             </div>
